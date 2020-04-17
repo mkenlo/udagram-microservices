@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: backend-user
+  name: backend-user
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: backend-user
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        service: backend-user
+    spec:
+      containers:
+        - env:
+            - name: AWS_BUCKET
+              value: udagram-mel-dev
+            - name: AWS_PROFILE
+              value: default
+            - name: AWS_REGION
+              value: us-east-1
+            - name: JWT_SECRET
+              value: helloworld
+            - name: POSTGRESS_DB
+              value: postgres
+            - name: POSTGRESS_HOST
+              value: udagrammeldb.c6wwmz520rz2.us-east-1.rds.amazonaws.com
+            - name: POSTGRESS_PASSWORD
+              value: udagrammeldb
+            - name: POSTGRESS_USERNAME
+              value: udagrammeldb
+            - name: URL
+              value: http://localhost:8100
+          image: mkenlo/udagram-ms-user
+          imagePullPolicy: IfNotPresent
+          name: udagram-ms-user
+          resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}
