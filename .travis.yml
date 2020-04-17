@@ -10,4 +10,4 @@ before_install:
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
 scripts:
-  - docker-compose up --build
+  - docker-compose up
