@@ -1,6 +1,9 @@
 version: "3"
 services:
   reverseproxy:
+     build:
+      context: ./reverseproxy
+      dockerfile: Dockerfile
     image: mkenlo/udagram-reverseproxy
     ports:
       - 8080:8080
@@ -9,6 +12,9 @@ services:
       - backend-user
       - backend-feed
   backend-user:
+    build:
+      context: ./ms-backend-user
+      dockerfile: Dockerfile
     container_name: udagram-ms-user
     image: mkenlo/udagram-ms-user
     environment:
@@ -22,6 +28,9 @@ services:
       JWT_SECRET: $JWT_SECRET
       URL: "http://localhost:8100"
   backend-feed:
+    build:
+      context: ./ms-backend-feed
+      dockerfile: Dockerfile
     container_name: udagram-ms-feed
     image: mkenlo/udagram-ms-feed
     volumes:
@@ -37,6 +46,9 @@ services:
       JWT_SECRET: $JWT_SECRET
       URL: "http://localhost:8100"
   frontend:
+    build:
+      context: ./ms-frontend
+      dockerfile: Dockerfile
     container_name: udagram-frontend
     image: mkenlo/udagram-frontend
     ports:
