@@ -13,7 +13,7 @@ services:
       - backend-feed
   backend-user:
     build:
-      context: ./ms-backend-user
+      context: ./ms-restapi-user
       dockerfile: Dockerfile
     container_name: udagram-ms-user
     image: mkenlo/udagram-ms-user
@@ -29,7 +29,7 @@ services:
       URL: "http://localhost:8100"
   backend-feed:
     build:
-      context: ./ms-backend-feed
+      context: ./ms-restapi-feed
       dockerfile: Dockerfile
     container_name: udagram-ms-feed
     image: mkenlo/udagram-ms-feed
