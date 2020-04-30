@@ -1,5 +1,6 @@
 # udagram-microservices
 
+[![Build Status](https://travis-ci.org/mkenlo/udagram-microservices.svg?branch=master)](https://travis-ci.org/mkenlo/udagram-microservices)
 A Udacity Project.
 
 # How to run
